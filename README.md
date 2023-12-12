@@ -1,4 +1,4 @@
-# Data-science-with-mlflow
+# Data Science With MLflow
 
 Data science project with end to end implementation with MLflow and AWS with Github Action CICD.
 
