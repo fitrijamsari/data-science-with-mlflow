@@ -1,3 +1,5 @@
+# configbox enable easy access to variables/parameters in dict, list, .yaml, .ini. More info https://github.com/cdgriffith/Box/wiki/ConfigBox
+
 import json
 import os
 from pathlib import Path
