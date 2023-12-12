@@ -6,10 +6,10 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 __version__ = "0.0.0"
 
-REPO_NAME = "End-to-end-ML-Project-with-MLflow"
-AUTHOR_USER_NAME = "entbappy"
+REPO_NAME = "data-science-with-mlflow"
+AUTHOR_USER_NAME = "fitrijamsari"
 SRC_REPO = "mlProject"
-AUTHOR_EMAIL = "entbappy73@gmail.com"
+AUTHOR_EMAIL = "fitrijamsari@gmail.com"
 
 
 setuptools.setup(
@@ -17,7 +17,7 @@ setuptools.setup(
     version=__version__,
     author=AUTHOR_USER_NAME,
     author_email=AUTHOR_EMAIL,
-    description="A small python package for ml app",
+    description="A small python package for ml application",
     long_description=long_description,
     long_description_content="text/markdown",
     url=f"https://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}",
