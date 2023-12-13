@@ -14,8 +14,12 @@ class DataTransformationTrainingPipeline:
         pass
 
     def main(self):
+        # data_validation_dir = "artifacts/02_data_validation"
+        data_validation_dir = (
+            ConfigurationManager().get_data_validation_config().root_dir
+        )
         try:
-            with open(Path("artifacts/data_validation/status.txt"), "r") as f:
+            with open(Path(f"{data_validation_dir}/status.txt"), "r") as f:
                 status = f.read().split(" ")[-1]
 
             if status == "True":
