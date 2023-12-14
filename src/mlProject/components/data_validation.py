@@ -11,6 +11,7 @@ class DataValidation:
         self.config = config
 
     def validate_all_columns(self) -> bool:
+        # validate dataset columns match with schema columns
         try:
             validation_status = True  # Initialize as True
 

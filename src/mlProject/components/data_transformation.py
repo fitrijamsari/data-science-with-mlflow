@@ -26,9 +26,6 @@ class DataTransformation:
         train.to_csv(os.path.join(self.config.root_dir, "train.csv"), index=False)
         test.to_csv(os.path.join(self.config.root_dir, "test.csv"), index=False)
 
-        logger.info("Splited data into training and test sets")
-        logger.info(train.shape)
-        logger.info(test.shape)
-
-        print(train.shape)
-        print(test.shape)
+        logger.info("SUCCESS: Splited data into training and test sets")
+        logger.info(f"Training Dataset: {train.shape}")
+        logger.info(f"Test Dataset: {test.shape}")

@@ -21,3 +21,9 @@ model_trainer:
   train_data_path: artifacts/03_data_transformation/train.csv
   test_data_path: artifacts/03_data_transformation/test.csv
   model_name: model.joblib
+
+model_evaluation:
+  root_dir: artifacts/05_model_evaluation
+  test_data_path: artifacts/03_data_transformation/test.csv
+  model_path: artifacts/04_model_trainer/model.joblib
+  metric_file_name: artifacts/05_model_evaluation/metrics.json

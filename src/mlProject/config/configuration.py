@@ -1,11 +1,21 @@
+import os
+
+from dotenv import load_dotenv
+
 from mlProject.constants import *
 from mlProject.entity.config_entity import (
     DataIngestionConfig,
     DataTransformationConfig,
     DataValidationConfig,
+    ModelEvaluationConfig,
     ModelTrainerConfig,
 )
 from mlProject.utils.common import create_directories, read_yaml
+
+load_dotenv()
+
+# Access environment variables
+mlflow_uri = os.getenv("MLFLOW_TRACKING_URI")
 
 
 class ConfigurationManager:
@@ -81,3 +91,22 @@ class ConfigurationManager:
         )
 
         return model_trainer_config
+
+    def get_model_evaluation_config(self) -> ModelEvaluationConfig:
+        config = self.config.model_evaluation
+        params = self.params.ElasticNet
+        schema = self.schema.TARGET_COLUMN
+
+        create_directories([config.root_dir])
+
+        model_evaluation_config = ModelEvaluationConfig(
+            root_dir=config.root_dir,
+            test_data_path=config.test_data_path,
+            model_path=config.model_path,
+            metric_file_name=config.metric_file_name,
+            all_params=params,
+            target_column=schema.name,
+            mlflow_uri=mlflow_uri,
+        )
+
+        return model_evaluation_config

@@ -4,7 +4,7 @@ from mlProject import logger
 from mlProject.components.model_trainer import ModelTrainer
 from mlProject.config.configuration import ConfigurationManager
 
-STAGE_NAME = "Model Training Stage"
+STAGE_NAME = "MODEL TRAINING STAGE"
 
 
 class ModelTrainerPipeline:
@@ -30,10 +30,10 @@ class ModelTrainerPipeline:
 
 if __name__ == "__main__":
     try:
-        logger.info(f">>>> Stage: {STAGE_NAME} started <<<<<")
+        logger.info(f">>>> STARTED: {STAGE_NAME} <<<<<")
         obj = ModelTrainerPipeline()
         obj.main()
-        logger.info(f">>>> Stage: {STAGE_NAME} completed <<<<<")
+        logger.info(f">>>>>> COMPLETED: {STAGE_NAME} <<<<<<\n\nx==========x")
     except Exception as e:
         logger.exception(e)
         raise e

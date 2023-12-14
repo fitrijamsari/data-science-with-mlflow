@@ -4,7 +4,7 @@ from mlProject import logger
 from mlProject.components.data_transformation import DataTransformation
 from mlProject.config.configuration import ConfigurationManager
 
-STAGE_NAME = "Data Transformation Stage"
+STAGE_NAME = "DATA TRANSFORMATION STAGE"
 
 # read status.txt file first, if validation_status = True then proceed with data Transformation pipeline
 
@@ -39,10 +39,10 @@ class DataTransformationTrainingPipeline:
 
 if __name__ == "__main__":
     try:
-        logger.info(f">>>> Stage: {STAGE_NAME} started <<<<<")
+        logger.info(f">>>> STARTED: {STAGE_NAME} <<<<<")
         obj = DataTransformationTrainingPipeline()
         obj.main()
-        logger.info(f">>>> Stage: {STAGE_NAME} completed <<<<<")
+        logger.info(f">>>>>> COMPLETED: {STAGE_NAME} <<<<<<\n\nx==========x")
     except Exception as e:
         logger.exception(e)
         raise e
