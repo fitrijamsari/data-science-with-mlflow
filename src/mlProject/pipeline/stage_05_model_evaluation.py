@@ -14,7 +14,8 @@ class ModelEvaluationPipeline:
     def main(self):
         # Check if model.joblib exist in the 04_model_trainer folder
         model_folder = ConfigurationManager().get_model_trainer_config().root_dir
-        model_path = Path(model_folder + "/model.joblib")
+        model_output = ConfigurationManager().get_model_trainer_config().model_output
+        model_path = Path(model_folder + "/" + model_output)
 
         if model_path.exists():
             config = ConfigurationManager()

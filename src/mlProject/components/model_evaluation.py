@@ -11,13 +11,15 @@ import pandas as pd
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 from mlProject import logger
+from mlProject.constants import *
 from mlProject.entity.config_entity import ModelEvaluationConfig
-from mlProject.utils.common import save_json
+from mlProject.utils.common import read_yaml
 
 
 class ModelEvaluation:
-    def __init__(self, config: ModelEvaluationConfig):
+    def __init__(self, config: ModelEvaluationConfig, config_filepath=CONFIG_FILE_PATH):
         self.config = config
+        self.model = read_yaml(config_filepath)
 
     def eval_metrics(self, actual, pred):
         rmse = np.sqrt(mean_squared_error(actual, pred))
@@ -26,6 +28,8 @@ class ModelEvaluation:
         return rmse, mae, r2
 
     def log_into_mlflow(self):
+        model_name = self.model.model_trainer.model_name
+
         test_data = pd.read_csv(self.config.test_data_path)
         model = joblib.load(self.config.model_path)
 
@@ -40,12 +44,13 @@ class ModelEvaluation:
 
             (rmse, mae, r2) = self.eval_metrics(test_y, pred)
 
-            # Saving metrics as local
+            # Saving metrics as local json file
             scores = {"rmse": rmse, "mae": mae, "r2": r2}
-            metric_file_name_json_path = Path(self.config.metric_file_name)
+            metric_file_name_json = Path(self.config.metric_file_name)
 
             # Save the scores dictionary as JSON
-            save_json(path=metric_file_name_json_path, data=scores)
+            with open(metric_file_name_json, "w") as json_file:
+                json.dump(scores, json_file)
 
             mlflow.log_params(self.config.all_params)
 
@@ -59,11 +64,9 @@ class ModelEvaluation:
                 # There are other ways to use the Model Registry, which depends on the use case,
                 # please refer to the doc for more information:
                 # https://mlflow.org/docs/latest/model-registry.html#api-workflow
+                # mlflow.sklearn.log_model(model, "model", registered_model_name="ElasticnetModel")
                 mlflow.sklearn.log_model(
-                    # OPTIMIZE: Read registered_model_name from params.yaml
-                    model,
-                    "model",
-                    registered_model_name="ElasticnetModel",
+                    model, "model", registered_model_name=f"{model_name}"
                 )
             else:
                 mlflow.sklearn.log_model(model, "model")
