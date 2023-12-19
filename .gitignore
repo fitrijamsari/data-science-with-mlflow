@@ -162,3 +162,7 @@ cython_debug/
 
 #others
 artifacts/*
+
+
+#mac
+.DS_Store

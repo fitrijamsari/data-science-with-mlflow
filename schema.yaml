@@ -1,16 +1,38 @@
 COLUMNS:
-  fixed acidity: float64
-  volatile acidity: float64
-  citric acid: float64
-  residual sugar: float64
-  chlorides: float64
-  free sulfur dioxide: float64
-  total sulfur dioxide: float64
-  density: float64
-  pH: float64
-  sulphates: float64
-  alcohol: float64
-  quality: int64
+  Bedroom: int64
+  Bathroom: int64
+  Property Size in sqft: float64
+  Nearby School: int64
+  Nearby Mall: int64
+  Completion Year: int64
+  Num of Floors: int64
+  Total Units: int64
+  Parking Lot: int64
+  Bus Stop: int64
+  Mall: int64
+  Park: int64
+  School: int64
+  Hospital: int64
+  Highway: int64
+  Railway Station: int64
+  Land Title_Malay Reserved: int64
+  Land Title_Non Bumi Lot: int64
+  State_Kedah: int64
+  State_Kelantan: int64
+  State_Kuala Lumpur: int64
+  State_Labuan: int64
+  State_Melaka: int64
+  State_Negeri Sembilan: int64
+  State_Pahang: int64
+  State_Penang: int64
+  State_Perak: int64
+  State_Perlis: int64
+  State_Putrajaya: int64
+  State_Sabah: int64
+  State_Sarawak: int64
+  State_Selangor: int64
+  State_Terengganu: int64
+  Price: float64
 
 TARGET_COLUMN:
-  name: quality
+  name: Price

@@ -2,25 +2,28 @@ artifacts_root: artifacts
 
 data_ingestion:
   root_dir: artifacts/01_data_ingestion
-  source_URL: https://github.com/entbappy/Branching-tutorial/raw/master/winequality-data.zip
+  source_URL: https://github.com/fitrijamsari/dataset_collection/raw/main/malaysia_condo_price_clean_data.csv.zip
+  # source_URL: https://github.com/entbappy/Branching-tutorial/raw/master/winequality-data.zip
   local_data_file: artifacts/01_data_ingestion/data.zip
   unzip_dir: artifacts/01_data_ingestion
 
 data_validation:
   root_dir: artifacts/02_data_validation
-  unzip_data_dir: artifacts/01_data_ingestion/winequality-red.csv
+  unzip_data_dir: artifacts/01_data_ingestion/malaysia_condo_price_clean_data.csv
+  # unzip_data_dir: artifacts/01_data_ingestion/winequality-red.csv
   STATUS_FILE: artifacts/02_data_validation/status.txt
 
 data_transformation:
   root_dir: artifacts/03_data_transformation
-  data_path: artifacts/01_data_ingestion/winequality-red.csv
+  data_path: artifacts/01_data_ingestion/malaysia_condo_price_clean_data.csv
+  # data_path: artifacts/01_data_ingestion/winequality-red.csv
   test_split_percentage: 0.3
 
 model_trainer:
   root_dir: artifacts/04_model_trainer
   train_data_path: artifacts/03_data_transformation/train.csv
   test_data_path: artifacts/03_data_transformation/test.csv
-  model_name: XGboostRegression #CHANGE MODEL NAME ACCORDINGLY WITH THE params.yaml
+  model_name: RandomForestRegression #CHANGE MODEL NAME ACCORDINGLY WITH THE params.yaml
   model_output: model.joblib
 
 model_evaluation:
